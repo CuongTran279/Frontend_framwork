@@ -1,0 +1,40 @@
+<div class="container border row position-absolute top-50 start-50 translate-middle justify-content-center align-items-center bg-white mx-auto p-2 rounded" style="height: 500px;width: 1000px;">
+  <div class="row pb-1">
+    <div class="col-7">
+      <img src="images/quizz.jpg" alt="" style="width: 100%;height: 100%;">
+    </div>
+    <div class="col-5 content">
+      <div class="title">
+        <h5>Thông tin Môn học</h5>
+      </div>
+      <div class="main-title">
+        <p>Đây là thông tin môn học này</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container text-center">
+  <div class="content py-4">
+  <h1>Danh sách các môn học</h1>
+</div>
+<div class="container main_content ">
+  <div class="card p-3" style="width: 18rem;"  ng-repeat="mh in subs | limitTo:pageSize:begin">
+    <img src="images/logos/{{mh.Logo}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{mh.Name}}</h5>
+      <input type="hidden" name="" value="{{mh.Description}}">
+      <a href="#/tracnghiem/{{mh.Id}}/{{mh.Name}}" class="btn btn-primary">Chi tiết</a>
+    </div>
+  </div>
+</div>
+<div class="contianer d-flex justify-content-center pt-5">
+  <ul class="pagination">
+      <li class="page-item"><a class="btn btn-dark" ng-click="first()" >First</a></li>
+      <li class="page-item"><a class="btn btn-dark" ng-click="prev()">Prev</a></li>
+      <li class="page-item"><a class="btn btn-dark" ng-click="next()">Next</a></li>
+      <li class="page-item"><a class="btn btn-dark" ng-click="last()">Last</a></li>
+  </ul> 
+</div>
+
+</div>
+</div>

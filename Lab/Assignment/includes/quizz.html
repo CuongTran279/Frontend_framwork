@@ -1,0 +1,49 @@
+<div class="container border row position-absolute top-50 start-50 translate-middle justify-content-center align-items-center bg-white mx-auto p-2 rounded" style="height: 500px;width: 1000px;">
+    <div class="row pb-1">
+      <div class="col-7">
+        <img src="images/quizz.jpg" alt="" style="width: 100%;height: 100%;">
+      </div>
+      <div class="col-5 content">
+        <div class="title">
+          <h5>{{tenMh}}</h5>
+        </div>
+        <div class="main-title">
+          <p>{{infor}}</p>
+        </div>
+        <button class="btn btn-primary mt-5">Bắt đầu môn học</button>
+      </div>
+    </div>
+  </div>
+<div class="container">
+    <div class="content py-4 d-flex justify-content-between">
+        <h1>{{tenMh}}</h1>
+        <p class="p-3 mb-2 bg-black text-white">{{sogiay}}</p>
+    </div>
+    <div class="container p-5">
+        <div class="card w-100" ng-repeat="ch in ques | limitTo:pageSize:start">
+            <h6 class="card-header">Câu hỏi số {{stt}} : {{ch.Text}}</h6>
+            <div class="card-body"  ng-repeat="p in ch.Answers">
+                <div class="form-check" >
+                  <input class="form-check-input" ng-model="answer" value="{{p.Id}}" type="radio" name="ques_{{ch.Id}}" id="{{p.Id}}" ng-click="dapan(p.Id,ch.AnswerId,ch.Marks)">
+                  <label class="form-check-label" for="{{p.Id}}">{{p.Text}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer d-flex justify-content-between pt-3">
+            <div class="" >
+                <h5>Điểm : {{diem}}</h5> 
+            </div>
+            <div class="submit">
+                <a href="#" class="btn btn-primary">Nộp</a>
+            </div>
+        </div>
+    </div>
+    <div class="contianer d-flex justify-content-center pt-5">
+        <ul class="pagination">
+            <li class="page-item"><a class="btn btn-dark" ng-click="first()" >First</a></li>
+            <li class="page-item"><a class="btn btn-dark" ng-click="prev()">Prev</a></li>
+            <li class="page-item"><a class="btn btn-dark" ng-click="next()">Next</a></li>
+            <li class="page-item"><a class="btn btn-dark" ng-click="last()">Last</a></li>
+        </ul> 
+    </div>
+</div>
