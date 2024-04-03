@@ -6,21 +6,28 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form ng-submit="login()" name="dangNhap" novalidate>
             <div class="mb-3">
               <label for="name" class="form-label">Tên đăng nhập</label>
-              <input type="text" class="form-control" id="name">
+              <input type="text" class="form-control" id="name" name="name" ng-model="student.name" ng-minlength="5" ng-maxlength="10" required>
+              <em class="text-danger" ng-show="dangNhap.name.$dirty && dangNhap.name.$error.required">Vui lòng nhập đầy đủ dữ liệu</em>
+              <em class="text-danger" ng-show="dangNhap.name.$dirty && dangNhap.name.$error.minlength">Tên đăng nhập phải lớn hơn 5 kí tự</em>
+              <em class="text-danger" ng-show="dangNhap.name.$dirty && dangNhap.name.$error.maxlength">Tên đăng nhập phải nhỏ hơn 15 kí tự</em>
             </div>
             <div class="mb-3">
               <label for="pass" class="form-label">Mật khẩu</label>
-              <input type="password" class="form-control" id="pass">
+              <input type="password" class="form-control" id="pass" name="pass" ng-model="student.pass" ng-minlength="5" required>
+              <em class="text-danger" ng-show="dangNhap.pass.$dirty && dangNhap.pass.$error.required">Vui lòng nhập đầy đủ dữ liệu</em>
+              <em class="text-danger" ng-show="dangNhap.pass.$dirty && dangNhap.pass.$error.minlength">Mật khẩu phải lớn hơn 5 kí tự</em>
             </div>
             Chưa có tài khoản? <a href="#"  data-bs-toggle="modal" data-bs-target="#resigter">Đăng Ký</a><br>
-            <button type="submit" class="btn btn-primary">Đăng nhập</button>
+            <button type="submit" class="btn btn-primary" ng-disabled="!dangNhap.$valid">Đăng nhập</button>
+            <p ng-if="dangNhap.$valid" class="text-success">Dữ liệu đã đủ tiêu chuẩn</p>
+            <p ng-if="!dangNhap.$valid" class="text-danger">Vui lòng nhập đầy đủ dữ liệu</p>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

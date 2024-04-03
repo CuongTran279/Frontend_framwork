@@ -6,20 +6,34 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form ng-submit="changePass()" name="change" novalidate>
+            <div class="mb-3">
+              <label for="" class="form-label">Tên đăng nhập</label>
+              <input type="text" class="form-control" id="" ng-model="name" name="name" disabled>
+            </div>
             <div class="mb-3">
               <label for="" class="form-label">Mật khẩu cũ</label>
-              <input type="password" class="form-control" id="">
+              <input type="text" class="form-control" id="" ng-model="pass_old" name="pass_old" ng-minlength="5" ng-maxlength="20" required>
+              <em class="text-danger" ng-show="change.pass_old.$dirty && change.pass_old.$error.required">Vui lòng nhập đầy đủ dữ liệu</em>
+              <em class="text-danger" ng-show="change.pass_old.$dirty && change.pass_old.$error.minlength">Tên đăng nhập phải lớn hơn 5 kí tự</em>
+              <em class="text-danger" ng-show="change.pass_old.$dirty && change.pass_old.$error.maxlength">Tên đăng nhập phải nhỏ hơn 20 kí tự</em>
             </div>
             <div class="mb-3">
               <label for="" class="form-label">Mật khẩu mới</label>
-              <input type="password" class="form-control" id="">
+              <input type="password" class="form-control" id="" ng-model="pass_new1" name="pass_new1" ng-minlength="5" required>
+              <em class="text-danger" ng-show="change.pass_new1.$dirty && change.pass_new1.$error.required">Vui lòng nhập đầy đủ dữ liệu</em>
+              <em class="text-danger" ng-show="change.pass_new1.$dirty && change.pass_new1.$error.minlength">Mật khẩu phải lớn hơn 5 kí tự</em>
             </div>
             <div class="mb-3">
-                <label for="" class="form-label">Nhập lại mật khẩu mới</label>
-                <input type="password" class="form-control" id="">
+              <label for="" class="form-label">Nhập lại mật khẩu mới</label>
+              <input type="password" class="form-control" id="" ng-model="pass_new2" name="pass_new2" ng-minlength="5"  required>
+              <em class="text-danger" ng-show="change.pass_new2.$dirty && change.pass_new2.$error.required">Vui lòng nhập đầy đủ dữ liệu</em>
+              <em class="text-danger" ng-show="change.pass_new2.$dirty && change.pass_new2.$error.minlength">Mật khẩu phải lớn hơn 5 kí tự</em>
+              <em class="text-danger" ng-show="change.pass_new2.$dirty && !change.pass_new2.$error.minlength && pass_new1 != pass_new2">Mật khẩu không giống nhau</em>
               </div>
-            <button type="submit" class="btn btn-primary">Đổi mật khẩu</button>
+            <button type="submit" class="btn btn-primary" ng-disabled="!change.$valid || pass_new1 != pass_new2">Đổi mật khẩu</button>
+            <p ng-if="change.$valid && pass_new1 == pass_new2" class="text-success">Dữ liệu đã đủ tiêu chuẩn</p>
+            <p ng-if="!change.$valid && pass_new1 != pass_new2 " class="text-danger">Vui lòng nhập đầy đủ dữ liệu</p>
           </form>
         </div>
         <div class="modal-footer">

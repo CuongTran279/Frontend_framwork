@@ -1,33 +1,49 @@
 <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Đăng ký</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="" class="form-label">Email</label>
-            <input type="email" class="form-control" id="" aria-describedby="emailHelp">
-          </div>
-          <div class="mb-3">
-            <label for="" class="form-label">Tên đăng nhập</label>
-            <input type="text" class="form-control" id="">
-          </div>
-          <div class="mb-3">
-            <label for="" class="form-label">Mật khẩu</label>
-            <input type="text" class="form-control" id="">
-          </div>
-          <div class="mb-3">
-            <label for="" class="form-label">Nhập lại mật khẩu</label>
-            <input type="text" class="form-control" id="">
-          </div>
-          Đã có tài khoản? <a href="#"  data-bs-toggle="modal" data-bs-target="#login">Đăng nhập</a><br>
-          <button type="submit" class="btn btn-primary">Đăng ký</button>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="exampleModalLabel">Đăng ký</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <form name="resigter"  novalidate>
+        <div class="mb-3">
+          <label for="" class="form-label">Email</label>
+          <input type="email" class="form-control" id="" aria-describedby="emailHelp" name="email" ng-model="std.email" required>
+          <em class="text-danger" ng-show="resigter.email.$dirty && resigter.email.$error.required">Vui lòng nhập đầy đủ dữ liệu</em>
+          <em class="text-danger" ng-show="resigter.email.$dirty && resigter.email.$error.email">Vui lòng nhập đúng định dạng email</em>
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Tên đăng nhập</label>
+          <input type="text" class="form-control" id="" name="name" ng-model="std.name" ng-minlength="5" ng-maxlength="20" required>
+          <em class="text-danger" ng-show="resigter.name.$dirty && resigter.name.$error.required">Vui lòng nhập đầy đủ dữ liệu</em>
+          <em class="text-danger" ng-show="resigter.name.$dirty && resigter.name.$error.minlength">Tên đăng nhập phải lớn hơn 5 kí tự</em>
+          <em class="text-danger" ng-show="resigter.name.$dirty && resigter.name.$error.maxlength">Tên đăng nhập phải nhỏ hơn 20 kí tự</em>
+        </div>
+        <div class="mb-3"> 
+          <label for="" class="form-label">Mật khẩu</label>
+          <input type="text" class="form-control" id="" name="pass" ng-model="std.pass" ng-minlength="5" required>
+          <em class="text-danger" ng-show="resigter.pass.$dirty && resigter.pass.$error.required">Vui lòng nhập đầy đủ dữ liệu</em>
+          <em class="text-danger" ng-show="resigter.pass.$dirty && resigter.pass.$error.minlength">Mật khẩu phải lớn hơn 5 kí tự</em>
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Nhập lại mật khẩu</label>
+          <input type="text" class="form-control" id="" name="rpass" ng-model="rpass" ng-minlength="5" required>
+          <em class="text-danger" ng-show="resigter.rpass.$dirty && resigter.rpass.$error.required">Vui lòng nhập đầy đủ dữ liệu</em>
+          <em class="text-danger" ng-show="resigter.rpass.$dirty && resigter.rpass.$error.minlength">Mật khẩu phải lớn hơn 5 kí tự</em>
+          <em class="text-danger" ng-show="resigter.rpass.$dirty && !resigter.rpass.$error.minlength && std.pass !== rpass">Mật khẩu nhập lại không giống nhau</em>
+          <!-- <em class="text-danger" ng-show="resigter.rePass.$dirty && std.pass !== std.Repass">Mật khẩu nhập lại không giống nhau</em> -->
+        </div>
+        Đã có tài khoản? <a href="#" data-bs-toggle="modal" data-bs-target="#login">Đăng nhập</a><br>
+        <button type="submit" class="btn btn-primary" ng-click="dangKy()" ng-disabled="!resigter.$valid || rpass == std.pass">Đăng ký</button>
+        <p ng-if="resigter.$valid" class="text-success">Dữ liệu đã đủ tiêu chuẩn</p>
+        <p ng-if="!resigter.$valid" class="text-danger">Vui lòng nhập đầy đủ dữ liệu</p>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
     </div>
   </div>
+</div>
+<script>
+  
+</script>

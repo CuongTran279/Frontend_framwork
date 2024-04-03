@@ -81,11 +81,8 @@
       </ol>
     </nav>
   </div>
-  <div class="container w-25">
-  
-  </div>
-  <div class="container mt-5 text-center">
-    <ng-view></ng-view>
+  <div class="container mt-5 ">
+    <div ng-view></div>
   </div>
   <div class="mt-5 p-4 bg-dark text-white text-center">
     Footer
@@ -94,9 +91,13 @@
 <script>
   angular.module('test',['ngRoute']).config(($routeProvider)=>{
     $routeProvider
-     .when('/list',{templateUrl:'view/list.html',controller:listController})
-     .when('/add',{templateUrl:'view/add.html',controller:''})
+     .when('/list',{templateUrl:'view/list.html',controller: ListController,})
+     .when('/add',{templateUrl:'view/add.html',controller:addController,})
+     .when('/detail/:id',{templateUrl:'view/detail.html',controller:editController})
+     .when('/delete/:id',{templateUrl:'view/list.html',controller:ListController})
   })
 </script>
 <script src="controller/listController.js"></script>
+<script src="controller/editController.js"></script>
+<script src="controller/addController.js"></script>
 </html>

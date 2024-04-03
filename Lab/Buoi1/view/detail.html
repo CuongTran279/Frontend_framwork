@@ -1,0 +1,23 @@
+<h2 class="text-center">CHI TIẾT ĐIỆN THOẠI</h2>
+  <form >
+    <div class="mb-3 mt-3">
+      <label for="email">ID:</label>
+      <input type="email" class="form-control" id="email" placeholder="" ng-model="product.id" disabled>
+    </div>
+    <div class="mb-3">
+      <label for="pwd">Name:</label>
+      <input type="text" class="form-control" id="pwd" placeholder="" ng-model="product.Name">
+    </div>
+    <div class="mb-3">
+        <label for="pwd">Description:</label>
+        <input type="text" class="form-control" id="pwd" placeholder="" ng-model="product.Des">
+      </div>
+    <div class="mb-3">
+      <label for="pwd">Price:</label>
+      <input type="text" class="form-control" id="pwd" placeholder="" ng-model="product.Price">
+    </div>
+    <div class="text-center">
+      <a class="btn btn-primary" href="#!list">Danh sách</a>  <button type="submit" ng-click="update()" class="btn btn-success">Sửa</button> 
+    </div>
+    
+  </form>

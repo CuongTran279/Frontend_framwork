@@ -5,10 +5,10 @@
     </div>
     <div class="col-5 content">
       <div class="title">
-        <h5>Thông tin Môn học</h5>
+        <h5>Thông tin Website</h5>
       </div>
       <div class="main-title">
-        <p>Đây là thông tin môn học này</p>
+        <p>Quizzez là một nền tảng học tập trực tuyến đầy đủ tính năng, được xây dựng trên cơ sở của Bootstrap và AngularJS, nơi mà người dùng có thể tham gia vào việc giải quyết các câu hỏi phức tạp liên quan đến các chủ đề lập trình đa dạng, từ Python đến JavaScript và nhiều hơn nữa, đồng thời tận hưởng một hệ thống điểm số tự động, các hướng dẫn chi tiết và sự hỗ trợ từ cộng đồng đam mê học tập.</p>
       </div>
     </div>
   </div>
@@ -19,7 +19,7 @@
 </div>
 <div class="container main_content ">
   <div class="card p-3" style="width: 18rem;"  ng-repeat="mh in subs | limitTo:pageSize:begin">
-    <img src="images/logos/{{mh.Logo}}" class="card-img-top" alt="...">
+    <img src="images/logos/{{mh.Logo}}" style="width: 200px;height: 200px;" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{mh.Name}}</h5>
       <input type="hidden" name="" value="{{mh.Description}}">

@@ -1,44 +1,38 @@
-<h1 class="text-center text-upercase">Danh sách</h1>
-<button class="btn btn-success float-end">OK</button>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td><button class="btn btn-primary">Sửa</button> <button class="btn btn-danger">Xóa</button></td>
-    </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td><button class="btn btn-primary">Sửa</button> <button class="btn btn-danger">Xóa</button></td>
-    </tr>
-  </tbody>
-</table>
-<div class="container mt-5 text-center">
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <li class="page-item disabled">
-        <a class="page-link">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
-    </ul>
-  </nav>
+<div class="text-center">
+  <h1 class="text-center text-upercase">Danh sách</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Des</th>
+        <th scope="col">Price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="pr in products">
+        <td>{{pr.id}}</td>
+        <td>{{pr.Name}}</td>
+        <td>{{pr.Des}}</td>
+        <td>{{pr.Price}}</td>
+        <td><button class="btn btn-primary" ng-click="detail(pr.id)">Sửa</button> <button class="btn btn-danger" ng-click="delete(pr.id)">Xóa</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="container mt-5 text-center">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </div>

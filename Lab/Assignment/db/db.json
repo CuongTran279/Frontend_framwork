@@ -1,14 +1,26 @@
 {
-    "posts": [
-      { "id": "1", "title": "a title", "views": 100 },
-      { "id": "2", "title": "another title", "views": 200 }
-    ],
-    "comments": [
-      { "id": "1", "text": "a comment about post 1", "postId": "1" },
-      { "id": "2", "text": "another comment about post 1", "postId": "1" }
-    ],
-    "profile": {
-      "name": "typicode"
+  "user": [
+    {
+      "email": "0965864859cuong@gmail.com",
+      "name": "tran cuong",
+      "pass": "11111",
+      "id": "3e2f"
+    },
+    {
+      "email": "096g@gmail.com",
+      "name": "admin",
+      "pass": "66666",
+      "id": "b19f"
     }
-  }
-  
+  ],
+  "result": [
+    {
+      "id": "0c70",
+      "idUser": "b19f",
+      "name": "admin",
+      "mark": 3,
+      "idMh": "ADBS",
+      "tenMh": "Lập trình Android cơ bản"
+    }
+  ]
+}

@@ -6,14 +6,14 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form ng-submit="forget()" name="forget_pass" novalidate>
           <div class="mb-3">
             <label for="" class="form-label">Nhập Email</label>
-            <input type="text" class="form-control" id="">
+            <input type="text" class="form-control" id="" name="email">
           </div>
           <div class="mb-3">
             <label for="" class="form-label">Tên đăng nhập</label>
-            <input type="text" class="form-control" id="">
+            <input type="text" class="form-control" id="" name="name">
           </div>
           <button type="submit" class="btn btn-primary">Lấy lại mật khẩu</button>
         </form>

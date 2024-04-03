@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirm Password Example</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="myController">
+
+  <h2>Confirm Password Example</h2>
+
+  <form name="myForm" ng-submit="submitForm()" novalidate>
+    <label for="password">Password:</label>
+    <input type="password" name="password" ng-model="formData.password" ng-minlength="5" required>
+    <div ng-show="myForm.password.$dirty && myForm.password.$error.required">
+      Password is required.
+    </div>
+    <div ng-show="myForm.password.$dirty && myForm.password.$error.minlength">
+      Password must be at least 5 characters.
+    </div>
+  
+    <label for="confirmPassword">Confirm Password:</label>
+    <input type="password" name="confirmPassword" ng-model="formData.confirmPassword" ng-minlength="5" required ng-disabled="!passwordValid">
+    <div ng-show="myForm.confirmPassword.$dirty && myForm.confirmPassword.$error.required">
+      Confirm Password is required.
+    </div>
+    <div ng-show="myForm.confirmPassword.$dirty && myForm.confirmPassword.$error.minlength">
+      Confirm Password must be at least 5 characters.
+    </div>
+    <div ng-show="formData.password !== formData.confirmPassword && myForm.confirmPassword.$dirty && !myForm.confirmPassword.$error.required">
+      Passwords do not match.
+    </div>
+  
+    <button type="submit" ng-disabled="!myForm.$valid">Submit</button>
+  </form>
+  
+  
+
+  <div ng-if="submitted">
+    <p ng-if="myForm.$valid">Form submitted successfully!</p>
+    <p ng-if="!myForm.$valid">Please correct the errors in the form.</p>
+  </div>
+<script>
+  angular.module('myApp', [])
+  .controller('myController', function($scope) {
+    $scope.formData = {};
+    $scope.passwordValid = false;
+
+    $scope.$watchGroup(['formData.password', 'formData.confirmPassword'], function(newValues, oldValues, scope) {
+      if (newValues[0].length >= 5 && newValues[1].length >= 5) {
+        $scope.passwordValid = true;
+      } else {
+        $scope.passwordValid = false;
+      }
+    });
+
+    $scope.submitForm = function() {
+      console.log('Form submitted successfully!');
+      // Thực hiện các hành động khác ở đây
+    };
+  });
+
+
+
+</script>
+
+</body>
+</html>

@@ -30,6 +30,9 @@
                 <li><a class="dropdown-item" href="#/tracnghiem/{{mh.Id}}/{{mh.Name}}/{{mh.Description}}" ng-repeat="mh in subs">{{mh.Name}}=>{{mh.Id}}</a></li>
               </ul>
             </div>
+            <!-- <li class="nav-item">
+              <a href="" class="nav-link"><i class="bi bi-search"></i></a>
+            </li> -->
           </ul>
         </div>
       </nav>
@@ -38,18 +41,19 @@
         <div class="dropdown">
         <a class="btn  dropdown-toggle border border-0 fs-5" href="#" role="button" data-bs-toggle="dropdown"
           aria-expanded="false">
-          Tài khoản
+          <b ng-if="name == null">Tài khoản</b>
+          <b ng-if="name != null">Xin chào : {{name}}</b>
         </a>
         <ul class="dropdown-menu w-100">
-          <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#resigter">Đăng ký</a></li>
-          <li><a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#login">Đăng nhập</a></li>
-          <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#forget_pass">Quên mật khẩu</a></li>
-          <li>
+          <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#resigter" ng-if="name == null">Đăng ký</a></li>
+          <li><a class="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#login" ng-if="name == null">Đăng nhập</a></li>
+          <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#forget_pass" ng-if="name == null">Quên mật khẩu</a></li>
+          <!-- <li>
             <hr class="dropdown-divider">
-          </li>
-          <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
-          <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#change_pass">Đổi mật khẩu</a></li>
-          <li><a class="dropdown-item" href="#">Cập nhật tài khoản</a></li>
+          </li> -->
+          <li><a class="dropdown-item" href="#" ng-if="name != null" ng-click="logOut()">Đăng xuất</a></li>
+          <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#change_pass" ng-if="name != null">Đổi mật khẩu</a></li>
+          <li><a class="dropdown-item" href="#" ng-if="name != null">Cập nhật tài khoản</a></li>
         </ul>
       </div>
     </div>

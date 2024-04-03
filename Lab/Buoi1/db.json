@@ -1,13 +1,22 @@
 {
-    "Product":[
-        {
-            "Id":"1",
-            "Name":"avasv",
-            "Des":"gsagasgas"
-        },{
-            "Id":"2",
-            "Name":"gsgewgq3",
-            "Des":"g32gwgewgew"
-        }
-    ]
+  "Product": [
+    {
+      "Name": "test3",
+      "Des": "san phẩm",
+      "Price": "122331",
+      "id": "bba7"
+    },
+    {
+      "Name": "sản phẩm test",
+      "Des": "đây là mô tả",
+      "Price": "1000",
+      "id": "bf9b"
+    },
+    {
+      "id": "ae17",
+      "Name": "sp3",
+      "Des": "test",
+      "Price": "123"
+    }
+  ]
 }

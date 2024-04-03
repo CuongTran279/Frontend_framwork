@@ -31,3 +31,9 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;
 }
+.time-out{
+    width: 0%;
+    height: 5px;
+    background-color: red;
+    border-radius: 10px;
+}

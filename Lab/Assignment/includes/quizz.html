@@ -9,8 +9,10 @@
         </div>
         <div class="main-title"  >
           <p>{{infor}}</p>
+          <p>Tổng số câu : 10</p>
         </div>
-        <button class="btn btn-primary mt-5" ng-click="hienThi()" ng-hide="hide">Bắt đầu môn học</button>
+        <button class="btn btn-primary mt-5" ng-click="hienThi()" ng-hide="hide" ng-disabled="name == null">Bắt đầu môn học</button>
+        <p ng-if="name == null"> Vui lòng đăng nhập để làm bài</p>
       </div>
     </div>
   </div>
@@ -19,14 +21,17 @@
         <h1>{{tenMh}}</h1>
         <p class="p-3 mb-2 bg-black text-white">{{countdown}}</p>
     </div>
+    <div class="container">
+      <div class="time-out">
+      </div>
+    </div>
     <div class="container p-5">
         <div class="card w-100" ng-repeat="ch in ques | limitTo:pageSize:start">
             <h6 class="card-header">Câu hỏi số {{stt}} : {{ch.Text}}</h6>
             <div class="card-body"  ng-repeat="p in ch.Answers">
                 <div class="form-check" >
-                  <!-- <button class="btn btn-primary" style="width: 100px;hei" ng-model="answer" value="{{p.Id}}" type="radio" name="ques_{{ch.Id}}" id="{{p.Id}}" ng-click="dapan(p.Id,ch.AnswerId,ch.Marks)">{{p.Text}}</button> -->
-                  <input class="form-check-input" ng-disabled="answerSelected" ng-model="answer" value="{{p.Id}}" type="radio" name="ques_{{ch.Id}}" id="{{p.Id}}" ng-click="dapan(p.Id,ch.AnswerId,ch.Marks)">
-                  <label class="form-check-label" for="{{p.Id}}">{{p.Text}}</label>
+                  <input class="form-check-input answer" ng-disabled="answerSelected" ng-model="answer" value="{{p.Id}}" type="radio" name="ques_{{ch.Id}}" id="{{p.Id}}" ng-click="dapan(p.Id,ch.AnswerId,ch.Marks)">
+                  <label  class="form-check-label" for="{{p.Id}}">{{p.Text}}</label>
                 </div>
             </div>
         </div>
@@ -35,16 +40,8 @@
                 <h5>Điểm : {{diem}}</h5> 
             </div>
             <div class="submit">
-                <a href="" class="btn btn-primary" ng-click="submit()">Nộp</a>
+                <a href="" class="btn btn-primary" ng-click="submit()">Nộp bài</a>
             </div>
         </div>
     </div>
-    <!-- <div class="contianer d-flex justify-content-center pt-5">
-        <ul class="pagination">
-            <li class="page-item"><a class="btn btn-dark" ng-click="first()" >First</a></li>
-            <li class="page-item"><a class="btn btn-dark" ng-click="prev()">Prev</a></li>
-            <li class="page-item"><a class="btn btn-dark" ng-click="next()">Next</a></li>
-            <li class="page-item"><a class="btn btn-dark" ng-click="last()">Last</a></li>
-        </ul> 
-    </div> -->
 </div>
