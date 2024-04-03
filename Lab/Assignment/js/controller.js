@@ -3,6 +3,7 @@ app.config(($routeProvider)=>{
     $routeProvider
     .when('/',{templateUrl:'includes/main_content.html',controller:'myctrl'})
     .when('/tracnghiem/:idMh/:tenSub/:des',{templateUrl:'includes/quizz.html',controller:'quizctrl'})
+    .when('/profile',{templateUrl:'includes/profile.html',controller:'myctrl'})
     .otherwise({templateUrl:'includes/main_content.html'});
 });
 app.controller("myctrl",($scope,$rootScope,$http,$location)=>{
@@ -25,6 +26,20 @@ app.controller("myctrl",($scope,$rootScope,$http,$location)=>{
             localStorage.setItem('students',JSON.stringify($response.data));
         })
     }
+    // Lấy kết quả
+    var filter = {name:$rootScope.name}
+        $http.get('http://localhost:3000/result').then(function ($response){
+            var result = $response.data;
+            var filterData = result.filter(function(item){
+                for(var key in filter){
+                    if(item[key] !== filter[key]){
+                        return false;
+                    }
+                }
+                return true;
+            })
+            $scope.ketQua = filterData;
+        })
     // Đăng ký tài khoản
     $scope.dangKy = function() {
         var user = {
@@ -47,11 +62,16 @@ app.controller("myctrl",($scope,$rootScope,$http,$location)=>{
     }
     // Đăng nhập
     $rootScope.name = sessionStorage.getItem('name');
+    const user = $scope.Students.find(s=>s.name === $rootScope.name);
+    if(user){
+        $rootScope.email = user.email;
+    }
     $scope.login = function(){
         $rootScope.name = "";
         check = $scope.Students.findIndex(st=> st.name == name[1].value && st.pass == pass[1].value)
         if(check>=0){
             $rootScope.name = name[1].value;
+            findUser = $scope.Students.find(s=>s.name == $rootScope.name);
             sessionStorage.setItem('name',name[1].value);
             alert("Đăng nhập thành công");
             window.location.reload();
@@ -64,7 +84,7 @@ app.controller("myctrl",($scope,$rootScope,$http,$location)=>{
     $scope.logOut=function(){
         $rootScope.name = "";
         sessionStorage.removeItem('name');
-        window.location.reload();
+        $location.path('/');
     }
     // Tìm mật khẩu
     $scope.forget = function(){
@@ -86,6 +106,7 @@ app.controller("myctrl",($scope,$rootScope,$http,$location)=>{
         }
         user.pass = pass_new1[0].value;
         var changeUser = {
+            id:user.id,
             email:user.email,
             name:user.name,
             pass:pass_new1[0].value
@@ -157,7 +178,7 @@ app.controller("quizctrl",($scope,$rootScope,$timeout,$http,$routeParams,$interv
     $scope.hienThi = ()=>{
         $scope.show = true;
         $scope.hide=true;
-        var countdownDate = new Date().getTime() + (20 * 60 * 1000);
+        var countdownDate = new Date().getTime() + (10 * 60 * 1000);
         var updateCountdown = ()=>{
             var now = new Date().getTime();
             var distance = countdownDate - now;
@@ -180,17 +201,52 @@ app.controller("quizctrl",($scope,$rootScope,$timeout,$http,$routeParams,$interv
         var ans = document.querySelector('label[for="'+ipDa+'"]');
         if(ipDa == ipDad){
             $scope.diem+=diem;
-            again(check);
             if($scope.stt < 10){
                 $timeout(next, 2000);
+                again(check);
+            }else{
+                $scope.Students = JSON.parse(localStorage.getItem('students'));
+                const check = $scope.Students.find(st=> st.name == $scope.name);
+                var currentTime = new Date();
+                var result = {
+                    idUser:check.id,
+                    name:check.name,
+                    mark:$scope.diem,
+                    idMh:$scope.idMh,
+                    tenMh:$scope.tenMh,
+                    time:currentTime.toISOString()
+                }
+                $http.post('http://localhost:3000/result',result).then(function (response){
+                    $scope.show = false;
+                    alert("Nộp bài thành công");
+                    $location.path('/');
+                });
             }
             $scope.selectAnswer();
             ans.style.color = "red";
             and.style.color = "green";
         }else{
-            again(check);
+            
             if($scope.stt < 10){
                 $timeout(next, 2000);
+                again(check);
+            }else{
+                $scope.Students = JSON.parse(localStorage.getItem('students'));
+                var currentTime = new Date();
+                const check = $scope.Students.find(st=> st.name == $scope.name);
+                var result = {
+                    idUser:check.id,
+                    name:check.name,
+                    mark:$scope.diem,
+                    idMh:$scope.idMh,
+                    tenMh:$scope.tenMh,
+                    time:currentTime.toISOString()
+                }
+                $http.post('http://localhost:3000/result',result).then(function (response){
+                    $scope.show = false;
+                    alert("Nộp bài thành công");
+                    $location.path('/');
+                });
             }
             $scope.selectAnswer();
             ans.style.color = "red";
@@ -217,12 +273,14 @@ app.controller("quizctrl",($scope,$rootScope,$timeout,$http,$routeParams,$interv
         }else{
             $scope.Students = JSON.parse(localStorage.getItem('students'));
             const check = $scope.Students.find(st=> st.name == $scope.name);
+            var currentTime = new Date();
             var result = {
                 idUser:check.id,
                 name:check.name,
                 mark:$scope.diem,
                 idMh:$scope.idMh,
-                tenMh:$scope.tenMh
+                tenMh:$scope.tenMh,
+                time:currentTime.toISOString()
             }
             $http.post('http://localhost:3000/result',result).then(function (response){
                 $scope.show = false;

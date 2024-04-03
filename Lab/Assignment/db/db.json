@@ -9,7 +9,7 @@
     {
       "email": "096g@gmail.com",
       "name": "admin",
-      "pass": "66666",
+      "pass": "12121",
       "id": "b19f"
     }
   ],
@@ -21,6 +21,64 @@
       "mark": 3,
       "idMh": "ADBS",
       "tenMh": "Lập trình Android cơ bản"
+    },
+    {
+      "id": "6485",
+      "idUser": "3e2f",
+      "name": "tran cuong",
+      "mark": 3,
+      "idMh": "ADBS",
+      "tenMh": "Lập trình Android cơ bản"
+    },
+    {
+      "id": "3d4b",
+      "idUser": "b19f",
+      "name": "admin",
+      "mark": 3,
+      "idMh": "ADTE",
+      "tenMh": "Kiểm thử và triển khai ứng dụng Android"
+    },
+    {
+      "id": "b3e7",
+      "idUser": "b19f",
+      "name": "admin",
+      "mark": 1,
+      "idMh": "GAME",
+      "tenMh": "Lập trình game 2D"
+    },
+    {
+      "id": "adfe",
+      "idUser": "b19f",
+      "name": "admin",
+      "mark": 4,
+      "idMh": "ADTE",
+      "tenMh": "Kiểm thử và triển khai ứng dụng Android"
+    },
+    {
+      "id": "2699",
+      "idUser": "3e2f",
+      "name": "tran cuong",
+      "mark": 4,
+      "idMh": "HTCS",
+      "tenMh": "HTML5 và CSS3"
+    },
+    {
+      "id": "d550",
+      "idUser": "3e2f",
+      "name": "tran cuong",
+      "mark": 5,
+      "idMh": "DBAV",
+      "tenMh": "SQL Server",
+      "time": "2024-04-03T13:18:45.613Z"
+    },
+    {
+      "id": "447f",
+      "idUser": "b19f",
+      "name": "admin",
+      "mark": 2,
+      "idMh": "JSPR",
+      "tenMh": "Lập trình JavaScript",
+      "time": "2024-04-03T13:22:31.597Z"
     }
   ]
 }

@@ -1,17 +1,26 @@
 
 <h2 class="text-center">THÊM ĐIỆN THOẠI</h2>
-  <form action="">
+  <form name="form">
+    <div class="mb-3">
+      <label for="pwd">Email:</label>
+      <input type="email" class="form-control" id="pwd" placeholder="" name="Email" ng-model="value.Email" required>
+      <span ng-if="form.Email.$dirty && form.Email.$error.required">Không đc bỏ trống</span>
+      <span ng-if="form.Email.$dirty && form.Email.$invalid">Email không hợp lệ</span>
+    </div>
     <div class="mb-3">
       <label for="pwd">Name:</label>
-      <input type="text" class="form-control" id="pwd" placeholder="" ng-model="value.Name">
+      <input type="text" class="form-control" id="pwd" placeholder="" name="Name" ng-model="value.Name" required>
+      <span ng-if="form.Name.$dirty && form.Name.$error.required">Không đc bỏ trống</span>
     </div>
     <div class="mb-3">
       <label for="pwd">Des:</label>
-      <textarea name="" ng-model="value.Des" id="" cols="200" rows="10"></textarea >
+      <textarea name="" name="Des" ng-model="value.Des" id="" cols="200" rows="10" required></textarea >
+        <span ng-if="form.Des.$dirty && form.Des.$error.required">Không đc bỏ trống</span>
     </div>
     <div class="mb-3">
       <label for="pwd">Price:</label>
-      <input type="text" class="form-control" id="pwd" placeholder="" ng-model="value.Price">
+      <input type="text" name="Price" class="form-control" id="pwd" placeholder="" ng-model="value.Price" required>
+      <span ng-if="form.Price.$dirty && form.Price.$error.required">Không đc bỏ trống</span>
     </div>
 
     <div class="text-center">
